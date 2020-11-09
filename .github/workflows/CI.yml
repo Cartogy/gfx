@@ -68,6 +68,9 @@ jobs:
             name: Ubuntu Stable
             channel: stable
             additional_command:
+            checks:
+              - advisories
+              - bans licenses sources
           - os: ubuntu-18.04
             name: Ubuntu Nightly
             channel: nightly
@@ -80,9 +83,6 @@ jobs:
             name: Windows Nightly
             channel: nightly
             additional_command:
-        checks:
-          - advisories
-          - bans licenses sources
     steps:
       - uses: actions/checkout@v2
       - if: matrix.channel == 'nightly'
